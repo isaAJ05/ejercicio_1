@@ -1,3 +1,11 @@
+from typing import List
+from pizzeria import Pizzeria
+from item import Item
+from cliente import Cliente
+from pedido import PedidoTelefono
+from pedido import PedidoOnline
+
+
 def main() -> None:
     # Creando la clase principal
     pizzeria = Pizzeria('La Bota')
