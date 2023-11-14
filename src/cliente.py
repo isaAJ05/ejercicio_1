@@ -1,6 +1,6 @@
-
+from __future__ import annotations
 from typing import List
-from pedido import Pedido
+from inventory.pedido import Pedido
 
 class Cliente:
     def __init__(self, nombre: str)-> None:

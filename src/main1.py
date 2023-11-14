@@ -1,9 +1,9 @@
-from typing import List
-from pizzeria import Pizzeria
-from item import Item
+from __future__ import annotations
+from core.pizzeria import Pizzeria
+from inventory.item import Item
 from cliente import Cliente
-from pedido import PedidoTelefono
-from pedido import PedidoOnline
+from inventory.pedido import PedidoTelefono, PedidoOnLine
+from typing import Any, List
 
 
 def main() -> None:

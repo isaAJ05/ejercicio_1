@@ -1,6 +1,7 @@
-
-from pedido import Pedido
+from __future__ import annotations
+from inventory.pedido import Pedido
 from cliente import Cliente
+from inventory.item import Item
 from typing import List
 
 
@@ -36,17 +37,28 @@ class Pizzeria:
     def get_cliente(index: int) -> "Cliente":
         return self.__clientes[index]
     
+    def get_nombre(self) -> str:
+        return self.__nombre
+    
     def get_item(index: int) -> "Item":
         return self.__items[index]
     
+    def get_items(self) -> List["Item"]:
+        return self.__items
+    
+    
+    
     def calc_prod_mas_vendido_cliente(self, num_cliente: int) -> int:
         if num_cliente < len(self.__clientes):
-            cliente = self.__clientes[num_cliente]
-            items = cliente.get_items()
-            if len(items) > 0:
-                prod_mas_vendido = items[0]
-                for item in items:
-                    if item.get_cantidad() > prod_mas_vendido.get_cantidad():
-                        prod_mas_vendido = item
-                return prod_mas_vendido.get_num_producto()
+            cliente_pedidos = self.__pedidos[num_cliente]
+            cantidades = {}
+            for pedido in cliente_pedidos:
+                for item in pedido:
+                    if item not in cantidades:
+                        cantidades[item] = 1
+                    else:
+                        cantidades[item] += 1
+            if cantidades:
+                prod_mas_vendido = max(cantidades, key=cantidades.get)
+                return prod_mas_vendido
         return -1
