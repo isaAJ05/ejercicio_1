@@ -1,7 +1,7 @@
 from __future__ import annotations
 from core.pizzeria import Pizzeria
 from inventory.item import Item
-from cliente import Cliente
+from person.cliente import Cliente
 from inventory.pedido import PedidoTelefono, PedidoOnLine
 from typing import Any, List
 
